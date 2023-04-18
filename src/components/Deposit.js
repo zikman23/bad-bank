@@ -6,26 +6,11 @@ import { UserContext, loadAllUserData, saveAllUserData } from './Context';
 import { Card } from './Card';
 import Processing from './Processing';
 
-// Includes a Bootstrap card with a form that has:
-// OK Deposit input field
-// OK Deposit button
-// OK Balance information displays above deposit form on the card
-
-// OK Not A Number Alert: User receives an alert if they add something that is not a number.
-// OK Negative Deposit Alert: User receives an alert if they try to deposit a negative number.
-// OK Disable deposit button if nothing is input
-
-// Deposit page should include the following functionality:
-// OK Success Message: When a user completes the deposit form, they receive a success message confirming their deposit was received.
-
 export default function Deposit() {
   const ctx = React.useContext(UserContext);
   console.log('Deposit context:', ctx.user);
   const [balance, setBalance] = useState(() => ctx.user.balance);
 
-  // Each balance change:
-  // - updates the list of users and saves
-  // - yields updated user for Context
   React.useEffect(() => {
     const userList = loadAllUserData();
     const theUser = userList.find((u) => u.id === ctx.user.id);
@@ -43,7 +28,7 @@ export default function Deposit() {
   };
 
   return (
-    <Card header={`${ctx.user.name}, deposit:`} title={`Current balance: ${balance}`}>
+    <Card header={`Deposit for ${ctx.user.name}`} title={`Current balance: ${balance}`}>
       <Processing
         actionText="Deposit"
         balance={balance}

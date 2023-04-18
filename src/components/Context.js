@@ -28,5 +28,5 @@ export function logIn(user) {
 }
 
 export function initUserDataOnCreate(user) {
-  user.balance = 400 + Math.round(Math.random() * 100);
+  user.balance = 0;
 }
