@@ -4,6 +4,7 @@ import { Card } from './Card';
 import { Link } from 'react-router-dom';
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
+import { nanoid } from 'nanoid';
 
 export default function CreateAccount() {
   const [success, setSuccess] = React.useState(false);
@@ -22,7 +23,7 @@ export default function CreateAccount() {
     onSubmit: (values) => {
       console.log(`Submit Pressed`);
 
-      const user = { id: '2', ...values };
+      const user = { id: nanoid(), ...values };
       initUserDataOnCreate(user);
       console.log(user);
 
